@@ -1,37 +1,52 @@
-<h3> Update Issue </h3>
+<h3> Add Issue </h3>
 <form #userForm="ngForm" *ngIf="!submitted" (ngSubmit)="onSubmit()">
 
   <div class="form-group">
     <label> Issue Summary </label>
-    <input type="text" class="form-control" id="summary"
-           required #name="ngModel" [(ngModel)]="issue.summary" name="summary">
+    <input type="text" required #issueSummary="ngModel" [class.is-invalid]="issueSummary.invalid && issueSummary.touched"
+           class="form-control" id="summary"
+           [(ngModel)]="issue.summary" name="summary">
+    <small class="text-danger" [class.d-none]="issueSummary.valid || issueSummary.untouched">
+      Summary is required!
+    </small>
   </div>
 
   <div class="form-group">
     <label> Description </label>
-    <input type="text" class="form-control" id="description"
+    <input type="text" required #description="ngModel" [class.is-invalid]="description.invalid && description.touched"
+           class="form-control" id="description"
            [(ngModel)]="issue.description" name="description">
+    <small class="text-danger" [class.d-none]="description.valid || description.untouched">
+        Description is required!
+    </small>
   </div>
 
+<!--  Needs to be fixed for the default value. Issue with selected-->
   <div class="form-group">
     <label> Issue type </label>
-    <select class="custom-select" name="issue_type"
+    <select (blur)="validationType(type.value)" (change)="validationType(type.value)"
+            #type="ngModel" [class.is-invalid]="typeHasError && (type.touched || type.untouched)"
+            class="custom-select" name="issue_type"
             [(ngModel)]="issue.type">
-      <option *ngFor="let type of types"
-              [selected]="type == issue.type">{{type}}</option>
+      <option value="default" selected> Choose an Issue Type</option>
+      <option *ngFor="let type of types">{{type}}</option>
     </select>
+    <small class="text-danger" [class.d-none]="!typeHasError || type.untouched"> Please chose an issue type</small>
   </div>
 
   <div class="form-group">
     <label> Issue state </label>
-    <select class="custom-select" name="state"
+    <select (blur)="validationState(state.value)" (change)="validationState(state.value)"
+            #state="ngModel" [class.is-invalid]="stateHasError && (state.touched || state.untouched)"
+            class="custom-select" name="state"
             [(ngModel)]="issue.state">
-      <option *ngFor="let state of states"
-              [selected]="state == issue.state">{{state}}</option>
+      <option value="default" selected> Choose a State</option>
+      <option *ngFor="let state of states">{{state}}</option>
     </select>
+    <small class="text-danger" [class.d-none]="!stateHasError || state.untouched"> Please chose a state</small>
   </div>
 
-  <button class="btn btn-success" type="submit">Submit</button>
+  <button [disabled]="userForm.form.invalid || stateHasError || typeHasError" class="btn btn-success" type="submit">Submit</button>
   <button (click)="onBack()" class="btn btn-danger" style="margin-left: 10px" type="button">Back</button>
 </form>
 

@@ -3,22 +3,38 @@
 
   <div class="form-group">
     <label> Project name </label>
-    <input type="text" class="form-control" id="name"
-           required #name="ngModel" [(ngModel)]="project.name" name="name">
+    <input type="text" class="form-control" id="name" required #projectName="ngModel"
+           [class.is-invalid]="projectName.invalid && projectName.touched"
+           [(ngModel)]="project.name" name="name">
+    <small class="text-danger" [class.d-none]="projectName.valid || projectName.untouched">
+      Project Name is required
+    </small>
   </div>
 
   <div class="form-group">
     <label> Company Name </label>
-    <input type="text" class="form-control" id="companyName"
+    <input type="text" class="form-control" id="companyName" required #name="ngModel"
+           [class.is-invalid]="name.invalid && name.touched"
            [(ngModel)]="project.companyName" name="companyName">
+    <small class="text-danger" [class.d-none]="name.valid || name.untouched">
+      Company Name is required
+    </small>
   </div>
 
   <div class="form-group">
     <label> Key </label>
-    <input type="text" class="form-control" id="key"
+    <input type="text" #key="ngModel" required pattern="\w\w\w\d\d" [class.is-invalid]="key.invalid && key.touched"
+           class="form-control" id="key"
            [(ngModel)]="project.key" name="key">
+    <div *ngIf="(key.errors && key.touched) && key.invalid">
+      <small class="text-danger" *ngIf="key.errors.pattern">
+        The pattern of your key should be 3 strings followed by 2 numbers!
+      </small>
+      <small class="text-danger" *ngIf="key.errors.required"> A key is required</small>
+    </div>
   </div>
 
-  <button class="btn btn-success" type="submit">Submit</button>
+  <button [disabled]="userForm.form.invalid" class="btn btn-success" type="submit">Submit</button>
+  <button (click)="onBack()" class="btn btn-danger" style="margin-left: 10px" type="button">Back</button>
 </form>
 

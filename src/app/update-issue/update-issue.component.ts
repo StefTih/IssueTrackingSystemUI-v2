@@ -12,6 +12,10 @@ import { ProjectService } from '../service/project.service';
 })
 export class UpdateIssueComponent implements OnInit {
 
+  // For the validation
+  typeHasError = true;
+  stateHasError = true;
+  
   // For the issues
   issue = new Issues();
   id: number;
@@ -56,6 +60,22 @@ export class UpdateIssueComponent implements OnInit {
       });
   }
 
+  validationType(value: string) {
+    if (value === "default") {
+      this.typeHasError = true;
+    } else {
+      this.typeHasError = false;
+    }
+  }
+  
+  validationState(value: string) {
+      if (value === "default") {
+        this.stateHasError = true;
+      } else {
+        this.stateHasError = false;
+      }
+    }
+  
   onBack() {
     this.goToIssueList();
   }

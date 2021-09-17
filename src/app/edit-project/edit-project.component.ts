@@ -28,7 +28,7 @@ export class EditProjectComponent implements OnInit {
       data => {this.project = data;
       }, error => console.log(error));
   }
-  
+
   private goToProjectList() {
     this.router.navigate(['/projects']);
   }
@@ -41,4 +41,7 @@ export class EditProjectComponent implements OnInit {
   }
 
 
+  onBack() {
+    this.router.navigate(['/projects']);
+  }
 }

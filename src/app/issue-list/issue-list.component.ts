@@ -66,4 +66,7 @@ export class IssueListComponent implements OnInit {
   }
 
 
+  onBack() {
+    this.router.navigate(['projects']);
+  }
 }

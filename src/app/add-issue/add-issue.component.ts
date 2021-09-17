@@ -12,6 +12,9 @@ import { ProjectService } from '../service/project.service';
 })
 export class AddIssueComponent implements OnInit {
 
+  //For errors
+  typeHasError= true;
+  stateHasError=true;
   // For the issues
   issue = new Issues();
   submitted = false;
@@ -65,6 +68,15 @@ export class AddIssueComponent implements OnInit {
     this.saveIssue();
   }
 
+  validationType(value: string) {
+    if (value === "default") {
+      this.typeHasError = true;
+    } 
+    else {
+      this.typeHasError = false;
+    }
+  }
+  
   private goToIssueList() {
     this.projectId = this.route.snapshot.params[`projectId`];
     this.router.navigate(['/issue-list',this.projectId]);
@@ -72,5 +84,14 @@ export class AddIssueComponent implements OnInit {
 
   onBack() {
     this.goToIssueList();
+  }
+
+  validationState(value: string) {
+    if (value === "default") {
+      this.stateHasError = true;
+    }
+    else {
+      this.stateHasError = false;
+    }
   }
 }

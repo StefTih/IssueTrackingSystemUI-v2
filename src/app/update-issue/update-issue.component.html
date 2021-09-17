@@ -1,0 +1,34 @@
+<h3> Add Issue </h3>
+<form #userForm="ngForm" *ngIf="!submitted" (ngSubmit)="onSubmit()">
+
+  <div class="form-group">
+    <label> Issue Summary </label>
+    <input type="text" class="form-control" id="summary"
+           required #name="ngModel" [(ngModel)]="issue.summary" name="summary">
+  </div>
+
+  <div class="form-group">
+    <label> Description </label>
+    <input type="text" class="form-control" id="description"
+           [(ngModel)]="issue.description" name="description">
+  </div>
+
+  <div class="form-group">
+    <label> Issue type </label>
+    <select class="custom-select" name="issue_type"
+            [(ngModel)]="issue.type">
+      <option *ngFor="let type of types">{{type}}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label> Issue state </label>
+    <select class="custom-select" name="state"
+            [(ngModel)]="issue.state">
+      <option *ngFor="let state of states">{{state}}</option>
+    </select>
+  </div>
+
+  <button class="btn btn-success" type="submit">Submit</button>
+  <button (click)="onBack()" class="btn btn-danger" style="margin-left: 10px" type="button">Back</button>
+</form>

@@ -1,0 +1,24 @@
+<h3> Edit Project </h3>
+<form #userForm="ngForm" *ngIf="!submitted" (ngSubmit)="onSubmit()">
+
+  <div class="form-group">
+    <label> Project name </label>
+    <input type="text" class="form-control" id="name"
+           required #name="ngModel" [(ngModel)]="project.name" name="name">
+  </div>
+
+  <div class="form-group">
+    <label> Company Name </label>
+    <input type="text" class="form-control" id="companyName"
+           [(ngModel)]="project.companyName" name="companyName">
+  </div>
+
+  <div class="form-group">
+    <label> Key </label>
+    <input type="text" class="form-control" id="key"
+           [(ngModel)]="project.key" name="key">
+  </div>
+
+  <button class="btn btn-success" type="submit">Submit</button>
+</form>
+

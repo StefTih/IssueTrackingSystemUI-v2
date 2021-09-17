@@ -68,10 +68,12 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "IssueTrackingSystemUI-v2:build:production"
+              "browserTarget": "IssueTrackingSystemUI-v2:build:production",
+              "proxyConfig": "src/proxy.config.json"
             },
             "development": {
-              "browserTarget": "IssueTrackingSystemUI-v2:build:development"
+              "browserTarget": "IssueTrackingSystemUI-v2:build:development",
+              "proxyConfig": "src/proxy.config.json"
             }
           },
           "defaultConfiguration": "development"

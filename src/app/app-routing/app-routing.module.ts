@@ -6,6 +6,8 @@ import {EditProjectComponent} from "../edit-project/edit-project.component";
 import {IssueListComponent} from "../issue-list/issue-list.component";
 import { UpdateIssueComponent } from '../update-issue/update-issue.component';
 import { AddIssueComponent } from '../add-issue/add-issue.component';
+import { UserLoginComponent } from '../user-login/user-login.component';
+import { UserRegisterComponent } from '../user-register/user-register.component';
 
 
 const routes: Routes = [
@@ -15,7 +17,9 @@ const routes: Routes = [
   {path: 'issue-list/:id', component: IssueListComponent},
   {path: 'update-issue/:id/:projectId', component: UpdateIssueComponent},
   {path: 'add-issue/:projectId', component: AddIssueComponent},
-  {path: '', redirectTo: 'projects', pathMatch: 'full'}
+  {path: 'login',component: UserLoginComponent},
+  {path: 'register',component: UserRegisterComponent},
+  {path: '', redirectTo: 'login', pathMatch: 'full'}
 ]
 
 @NgModule({

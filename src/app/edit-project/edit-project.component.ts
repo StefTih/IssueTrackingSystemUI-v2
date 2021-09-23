@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProjectService} from "../service/project.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Project} from "../project";
+import {Project} from "../entities/project";
 
 @Component({
   selector: 'app-edit-project',

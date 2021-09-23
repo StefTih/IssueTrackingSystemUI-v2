@@ -14,6 +14,8 @@ import { NgModule } from '@angular/core';
 import { EditProjectComponent } from './edit-project/edit-project.component';
 import { UpdateIssueComponent } from './update-issue/update-issue.component';
 import { AddIssueComponent } from './add-issue/add-issue.component';
+import { UserLoginComponent } from './user-login/user-login.component';
+import { UserRegisterComponent } from './user-register/user-register.component';
 
 
 
@@ -26,7 +28,9 @@ import { AddIssueComponent } from './add-issue/add-issue.component';
     EditProjectComponent,
     EditProjectComponent,
     UpdateIssueComponent,
-    AddIssueComponent
+    AddIssueComponent,
+    UserLoginComponent,
+    UserRegisterComponent
   ],
   imports: [
     BrowserModule,
